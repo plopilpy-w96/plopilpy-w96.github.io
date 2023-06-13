@@ -1,9 +1,9 @@
 [
     {
-        "name": "slateweather",
-        "friendlyName": "Slate Weather",
-        "description": "A replication of the Windows 10 taskbar weather tooltip.",
-        "author": "Plopilpy (https://plopilpy.is-a.dev/)",
+        "name": "slatepanel",
+        "friendlyName": "SlatePanel",
+        "description": "A useful news/weather dashboard for Windows 96, which includes multiple news sources, weather info, and a taskbar widget.",
+        "author": "Plopilpy (https://plopilpy.github.io/)",
         "category": "accessories",
         "version": 1.0,
         "feature_requirements": [],
@@ -11,9 +11,9 @@
         "max_os_version": 400005,
         "depends": [],
         "iconFiles": {
-            "32x32": "$REPO_PATH$/dist/s/slateweather/icon32.png",
-            "16x16": "$REPO_PATH$/dist/s/slateweather/icon16.png"
+            "32x32": "$REPO_PATH$/dist/s/slatepanel/icon32.png",
+            "16x16": "$REPO_PATH$/dist/s/slatepanel/icon16.png"
         },
-        "packageRoot": "$REPO_PATH$/dist/s/slateweather/"
+        "packageRoot": "$REPO_PATH$/dist/s/slatepanel/"
     }
 ]
