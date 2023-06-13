@@ -59,7 +59,7 @@ newsurl = 'http://feeds.bbci.co.uk/news/world/rss.xml';
 getnews();
 
 async function getweather() {
-    var sw_config = await w96.FS.readstr("c:/user/appdata/SlatePanel/config.json");
+    var sw_config = await w96.FS.readstr("c:/user/appdata/slatepanel/config.json");
     var sw_config_parsed = parent.JSON.parse(sw_config);
     var sw_city = sw_config_parsed.location
     var sw_unit = sw_config_parsed.unit
