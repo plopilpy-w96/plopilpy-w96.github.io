@@ -1,3 +1,16 @@
+# SlatePanel
+## Introduction
+Hello! Thank you for installing SlatePanel! You're currently running version <span id="latestver-sp"></span>.
+
+Please refer to the config setup guide below to see how to set up SlatePanel.
+
+<script>
+$("#latestver-sp").load("https://plopilpy.github.io/latest-sp.txt")
+</script>
+
+
+<br><br><br><br>
+## Setting Up the Config
 <font size="4"><u>Below is a list of possible options for the 2 config values in sw_config.json:</u></font><br>
 
 **Location/city/region:**
