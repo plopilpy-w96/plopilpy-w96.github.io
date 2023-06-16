@@ -5,7 +5,7 @@ Hello! Thank you for installing SlatePanel! You're currently running version <sp
 Please refer to the config setup guide below to see how to set up SlatePanel.
 
 <script>
-$("#latestver-sp").load("https://plopilpy.github.io/w96/latest-sp.txt")
+$("#latestver-sp").load("https://plopilpy.github.io/w96/latest-sp.txt");
 </script>
 
 
