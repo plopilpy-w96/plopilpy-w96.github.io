@@ -1,13 +1,8 @@
 # SlatePanel
 ## Introduction
-Hello! Thank you for installing SlatePanel! You're currently running version <span id="latestver-sp"></span>.
+Hello! Thank you for installing SlatePanel!
 
 Please refer to the config setup guide below to see how to set up SlatePanel.
-
-<script>
-$("#latestver-sp").load("https://plopilpy.github.io/w96/latest-sp.txt");
-</script>
-
 
 <br><br><br><br>
 ## Setting Up the Config
