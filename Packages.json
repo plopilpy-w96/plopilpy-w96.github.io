@@ -15,5 +15,22 @@
             "16x16": "$REPO_PATH$/dist/s/slatepanel/icon16.png"
         },
         "packageRoot": "$REPO_PATH$/dist/s/slatepanel/"
+    },
+    {
+        "name": "sysballoons",
+        "friendlyName": "SysBalloons",
+        "description": "Message balloons for Windows 96!",
+        "author": "Plopilpy (https://plopilpy.github.io/)",
+        "category": "utilities",
+        "version": 1.0,
+        "feature_requirements": [],
+        "min_os_version": 300005,
+        "max_os_version": 400005,
+        "depends": [],
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/s/sysballoons/icon32.png",
+            "16x16": "$REPO_PATH$/dist/s/sysballoons/icon16.png"
+        },
+        "packageRoot": "$REPO_PATH$/dist/s/sysballoons/"
     }
 ]
