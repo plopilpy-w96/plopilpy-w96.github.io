@@ -1,0 +1,61 @@
+//!wrt $BSPEC:{"icn":"C:/user/appdata/SlateWrite-beta/icon.png","dsc":"[Beta] A capable word processor for Windows 96.","frn":"SlateWrite","ver":1}
+const icon_slwrt = "  data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEUAAACAgID////AwMAAAAAAAIAAgIAAAP+AgAD//wCytKFeAAAAAXRSTlMAQObYZgAAAAFiS0dEAmYLfGQAAAAHdElNRQfiBhoAOB7KLNPqAAAA7ElEQVQoz1WSzW0CQQxGjUQByZAKbEeC43rCHY0cQQHLKh1sAyDu0R5SQsrNeH6c5Ts+PXssewBe/wOWDe1iz4uBgAP2cAUUOqDTdYQg0QEe5xvsiAIrp6SMOD1GyC0DRRKJiO/z/Qu2ql4yPa5L7VtjwqkA5qSYXIBAVDqcm9BLplsTGsgdLtpAmSPPsHw0YHMc53tyUGcYUTrIz35mgchLSIogqxI1wQ1OF9YsuEHy/WsCesn+sJjggJvgYP+zYDZWwBZs062efTqWgb614uTFU5CS+FauKTJQzVBWtomx37eC1QdoKwPtAfgDRqBI6wRvdjEAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTgtMDYtMjZUMDA6NTY6MzAtMDQ6MDBytiRTAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE4LTA2LTI2VDAwOjU2OjMwLTA0OjAwA+uc7wAAAABJRU5ErkJggg==";
+const { Theme } = w96.ui;
+
+class SlateWrite extends WApplication {
+    /**
+     * Application constructor.
+     */
+    constructor() {
+        super();
+    }
+    
+    /**
+     * Main entry point.
+     * @param {String[]} argv The program arguments.
+     */
+    async main(argv) {
+        super.main(argv);
+
+        // Create the window
+        const mainwnd = this.createWindow({
+            title: "SlateWrite BETA",
+            body: `<iframe id="suneditorframe" style="width: 100%; height: 100%; margin: 0 !important;" src="/_/user/appdata/SlateWrite/slatewrite.html"></iframe>`,
+            bodyClass: "sunedit-app",
+            windowClass: "suneditor-wnd",
+            taskbar: true,
+            resizable: true,
+            initialHeight: 525,
+            initialWidth: 840,
+            icon: icon_slwrt
+        }, true);
+        
+        // Show the window
+                const menu = new w96.ui.MenuBar();
+        menu.addRoot("File", [
+          {
+            type: "normal",
+            label: "Save file",
+            onclick: ()=>document.getElementById('suneditorframe').contentWindow.saveToFile()
+          },
+          {
+            type: "normal",
+            label: "Open file",
+            onclick: ()=>document.getElementById('suneditorframe').contentWindow.openFile()
+          },
+          {
+            type: "normal",
+            label: "Exit",
+            onclick: ()=>document.getElementById('usertext').value = ""
+          }
+        ]);
+        menu.addRoot("Help", [{type: "normal", label: "About", onclick: () => {
+        w96.ui.MsgBoxSimple.info("About SlateWrite", '<span class="bold-noaa">SlateWrite Word Processor Beta</span><br>Version b1.0<br><br>Powered by <a href="https://suneditor.com/">SunEditor</a><br><br><span>Written by <a href="https://github.com/plopilpy">Plopilpy</a></span>', "OK").dlg.setSize(320, 190);
+        }}]);
+        
+        mainwnd.show();
+        $('.sunedit-app').prepend(menu.getMenuDiv())
+    }
+}
+
+return await WApplication.execAsync(new SlateWrite(), this.boxedEnv.args);
