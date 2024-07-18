@@ -20,7 +20,7 @@ class SlateWrite extends WApplication {
         // Create the window
         const mainwnd = this.createWindow({
             title: "SlateWrite BETA",
-            body: `<iframe id="suneditorframe" style="width: 100%; height: 100%; margin: 0 !important;" src="/_/user/appdata/SlateWrite/slatewrite.html"></iframe>`,
+            body: `<iframe id="suneditorframe" style="width: 100%; height: 100%; margin: 0 !important;" src="/_/C/user/appdata/slatewrite-beta/slatewrite.html"></iframe>`,
             bodyClass: "sunedit-app",
             windowClass: "suneditor-wnd",
             taskbar: true,
