@@ -1,0 +1,105 @@
+//!wrt
+const { Theme } = w96.ui;
+
+class ModelViewer extends WApplication {
+    /**
+     * Application constructor.
+     */
+    constructor() {
+        super();
+    }
+    
+    /**
+     * Main entry point.
+     * @param {String[]} argv The program arguments.
+     */
+    async main(argv) {
+        super.main(argv);
+
+        // Create the window
+        const mainwnd = this.createWindow({
+            title: "Model Viewer",
+            body: `
+            <div class="w96-menubar"></div>
+            <model-viewer alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum" src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" ar environment-image="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr" poster="https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
+            <style>
+            .mdlview-app model-viewer{
+                width: 100%;
+                height: 100%;
+                z-index: 5;
+            }
+            .mdlview-app .mdlview-bgwrapper{
+                position: absolute;
+                width: calc(100% - 0.5vw);
+                height: calc(100% - 1.4vw);
+                overflow: hidden;
+                z-index: 1;
+            }
+            .mdlview-app .mdlview-bg{
+                background-image: linear-gradient(to right, #5551 1px, transparent 1px), linear-gradient(to bottom, #5551 1px, transparent 1px);
+                width: 100%;
+                height: 100%;
+                background-size: 5px 5px;
+                position: absolute;
+                transform: matrix3d(3,0,0.00,0,0.00,2,0.00,-0.005,0,0,1,0,0,0,0,1);
+                overflow: hidden;
+            }
+            .mdlview-app .w96-menubar{
+                z-index: 10;
+            }
+            </style>
+            <div class="mdlview-bgwrapper">
+            <div class="mdlview-bg">
+            </div></div>`,
+            bodyClass: "mdlview-app",
+            taskbar: true,
+            resizable: true,
+            initialHeight: 480,
+            initialWidth: 640,
+            icon: await Theme.getIconUrl("C:/local/mdlviewer/icon.png", '16x16')
+        }, true);
+
+        var fileExtension = "glb";
+
+        function mdlViewOpen(){
+        new parent.w96.ui.OpenFileDialog("C:/user/documents", ["stl", "obj", "glb"], async path => {
+        fileExtension = /[^.]+$/.exec(path)[0].toLowerCase()
+        if(fileExtension == "glb" || fileExtension == "gltf"){
+        document.querySelector(".mdlview-app model-viewer").setAttribute("src", path.replace("C:", "/_/C"))
+        } else {
+            alert("Invalid file format! GLB or GLTF required.")
+        }
+        
+        }).show();
+        }
+
+                const mdlViewMenu = new w96.ui.MenuBar();
+        mdlViewMenu.addRoot("File", [
+          {
+            type: "normal",
+            label: "Open...",
+            onclick: ()=> mdlViewOpen()
+          },
+          { type: "separator" },
+          {
+            type: "normal",
+            label: "Exit",
+            onclick: ()=>mainwnd.close()
+          }
+        ]);
+        mdlViewMenu.addRoot("Help", [{type: "normal", label: "About", onclick: () => {
+        w96.ui.MsgBoxSimple.info("About Model Viewer", '<span class="bold-noaa">Model Viewer</span><br>Version 1.0<br><br>Powered by <a href="https://modelviewer.dev/">Google Model Viewer</a><br><br><span>App by <a href="https://github.com/plopilpy">Plopilpy</a></span>', "OK").dlg.setSize(320, 190);
+        }}]);
+
+            $('.mdlview-app .w96-menubar').html(mdlViewMenu.getMenuDiv())
+        $("body").append(`<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>`)
+
+        if(argv[1]){
+            document.querySelector(".mdlview-app model-viewer").setAttribute("src", argv[1].replace("C:", "/_/C"))
+        }
+        // Show the window
+        mainwnd.show();
+    }
+}
+
+return await WApplication.execAsync(new ModelViewer(), this.boxedEnv.args);

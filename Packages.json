@@ -49,5 +49,22 @@
             "16x16": "$REPO_PATH$/dist/s/slatewrite-beta/icon16.png"
         },
         "packageRoot": "$REPO_PATH$/dist/s/slatewrite-beta/"
+    },
+    {
+        "name": "mdlviewer",
+        "friendlyName": "Model Viewer",
+        "description": "A 3D model viewer program capable of displaying GLB/GLTF models.",
+        "author": "Plopilpy (https://plopilpy.github.io/)",
+        "category": "accessories",
+        "version": 1.0,
+        "feature_requirements": [],
+        "min_os_version": 300005,
+        "max_os_version": 400005,
+        "depends": [],
+        "iconFiles": {
+            "32x32": "$REPO_PATH$/dist/m/mdlviewer/icon32.png",
+            "16x16": "$REPO_PATH$/dist/m/mdlviewer/icon16.png"
+        },
+        "packageRoot": "$REPO_PATH$/dist/m/mdlviewer/"
     }
 ]
